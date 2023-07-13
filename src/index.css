@@ -1,0 +1,138 @@
+#search-keyword {
+  margin: 100px;
+  align-self: center;
+  width: 50%;
+  height: 80px;
+  padding-right:30px;
+};
+
+#upload-frame{
+  width:auto;
+  height: auto;
+}
+
+#drop-box{
+  border: 5px black solid;
+  background-color: blue;
+  width: 1300px;
+  height: 350px;
+  margin-top: 10px;
+}
+
+#main-logo{
+  width: 512px;
+  height: 512px;
+}
+
+header{
+  height: 100px;
+}
+
+ul.product-list{
+  height: 100px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+#top-nav {
+  list-style-type: none;
+}
+
+#top-nav li{
+  float: left;
+  margin-left: 5px;
+}
+#top-nav li a{
+  display: block;
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+
+li {
+  border-right: 1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+/* #upload-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#drop-box {
+  border: 2px dashed #ccc;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-info {
+  margin-right: 10px;
+} 
+
+/* body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+} */
