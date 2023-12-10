@@ -1,10 +1,11 @@
-#search-keyword {
-  margin: 100px;
-  align-self: center;
-  width: 50%;
-  height: 80px;
-  padding-right:30px;
-};
+#search-form-div{
+  margin-top: 20px;
+  text-align: center;  
+}
+
+#search-box{
+  width: 300px;
+}
 
 #upload-frame{
   width:auto;
@@ -22,39 +23,65 @@
 #main-logo{
   width: 512px;
   height: 512px;
+  margin: auto;
+  display: block;
 }
 
 header{
-  height: 100px;
+  height: 100px; 
+  width: 100%;
 }
 
 ul.product-list{
-  height: 100px;
+  list-style-type: none;
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 40px;
+  border: 3px;
+}
+
+#top-navbar{
+  display: block;
+  float: right;
+  width: 100%;
+  border-bottom: solid 1px;
+  
+
 }
 
 #top-nav {
+  float: right;
   list-style-type: none;
+  width: 100%;
 }
 
-#top-nav li{
+#top-nav #bar-logo{
   float: left;
-  margin-left: 5px;
+  margin-right: 5px;
 }
-#top-nav li a{
+
+
+#top-nav .float-right{
+  float:right;
+  margin-left: 10px;
+}
+/* #top-nav li a{
   display: block;
   margin-left: 5px;
   text-decoration: none;
+} */
+
+#main {
+  width: 100%;
 }
 
 
-li {
-  border-right: 1px solid #bbb;
+li.product-list {
+  height: 80px;
+  border: 1px solid #0000;
 }
 
 li:last-child {

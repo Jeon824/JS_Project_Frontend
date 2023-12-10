@@ -1,18 +1,24 @@
-industry-platform-middleware-frontend
-============================
-express middleware for 2D,3D industry information : prototype-v1.0
+COSMICWEB-FRONTEND
+==================
+Frontend for client to get information from service 
 
 main branch
 -----------
 
 >#Added
->>Send get request for page to WAS
->>Send get request with keyword to WAS
->>File uploading page
->>Send post request with product data to WAS
+>1. create js files for react component
+
+>#Updated
+>1. some css property
+
+>#Removed
 
 
 >#Required
->>Login page
->>rendering product list
->>rendering product graphic with threejs
+>1. account page
+>2. product list rendering page
+>3. company info page
+>4. transaction status page
+>5. page which renders graphical object whose file is uploaded in database.
+>6. page for location-based service
+

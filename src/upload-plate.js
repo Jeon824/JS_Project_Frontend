@@ -16,7 +16,7 @@ export default class UploadPlate extends Component{
     }
     dragOver_Enter(e) {
         e.preventDefault();
-        e.target.style.backgroundColor = 'red';
+        //e.target.style.backgroundColor = 'red';
     }
    
     dragOver_handler(e) {
@@ -26,14 +26,31 @@ export default class UploadPlate extends Component{
     drop_handler(e) {
         e.preventDefault();
         const files = e.dataTransfer?.files;
+        console.log(files[0].name)
+        //Check file which is compatible type and is malware
+        const buffer_size = 1048576//1M B siz e
+        const array_length = files[0].size/buffer_size + (files[0].size%buffer_size > 0 ? 1 : 0);
+        const file_slices = new Array(array_length);
+        let offset = 0;
+        let end = 0;
+        for (let i = 0;i<array_length+1;i++){ 
+          end = offset + buffer_size + 1;
+          file_slices[i] = files[0].slice(offset, buffer_size + 1);
+          offset = buffer_size + 1;
+        }
+      
+        this.setState({file: file_slices});
+
+        e.target.style.backgroundColor = 'blue';
        
     }
 
     dragOver_Enter(e) {
         e.preventDefault();
-        e.target.style.backgroundColor = 'red';
+        // e.target.style.backgroundColor = 'red';
     }
     uploadHandler(e) {
+
      e.preventDefault();
      console.log('upload requested');
      const company_name = e.target.children[0].children[1].value;
@@ -78,14 +95,17 @@ export default class UploadPlate extends Component{
    }
    
     componentDidMount(){
-        const dropBox = document.getElementById('drop-box');
-        const uploadBtn = document.getElementById('file-upload-btn');
-        dropBox.addEventListener('dragover', this.dragOver_handler);
-        dropBox.addEventListener('drop',this.drop_handler);
+      const dropBox = document.getElementById('drop-box');
+      const uploadBtn = document.getElementById('file-upload-btn');
+      dropBox.addEventListener('dragover', this.dragOver_handler);
+      dropBox.addEventListener('drop',this.drop_handler);
     }
 
     componentWillUnmount(){
-
+      const dropBox = document.getElementById('drop-box');
+      const uploadBtn = document.getElementById('file-upload-btn');
+      dropBox.removeEventListener('dragover', this.dragOver_handler);
+      dropBox.removeEventListener('drop',this.drop_handler);
     }
     componentDidUpdate(){
 

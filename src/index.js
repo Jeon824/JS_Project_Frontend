@@ -8,7 +8,7 @@ import UploadPlate from './upload-plate';
 import ProductList from './product-list';
 
 
-const WAS_ADDRESS = "http://localhost:8080/product/upload" //Domain name which is hosted
+const WAS_ADDRESS = "http://localhost:8080/product/" //Domain name which is hosted
  
 class MainPlate extends Component{
     constructor(props){
@@ -32,9 +32,9 @@ class MainPlate extends Component{
     //     return true;
     // }
 
-    async searchByKeyword(e){
+    searchByKeyword(e){//handle keyword between user - client
+        console.log('search by keyword');
         e.preventDefault();
-        const keyName = e.key;
         const inputKeyword = e.target.children[0].value;
 
         console.log('typed keyword is',inputKeyword);
@@ -44,7 +44,7 @@ class MainPlate extends Component{
           user_method: 'GET'
         })
         
-        this.handleSearch(this.keyword);
+        this.handleSearch(inputKeyword);
                 
     }
 
@@ -52,65 +52,27 @@ class MainPlate extends Component{
         
     }
 
-    handleSearch(keyword) {
-        const xhr = new XMLHttpRequest();
-        const method = 'GET';
-        const explorer = {
-          keyword : keyword
-        }
-        /*
-        const url = WAS_ADDRESS +'/product';//nginx server domain name
-        xhr.setRequestHeader('Content-Type','')
-        xhr.open(method, url);
-        xhr.send();
-        xhr.onreadystatechange = (e) => {
-          const { target } = e
-        }
+    handleSearch(keyword) {//handle keyword between client - WAS
+      console.log('handle search');
 
-        if (target.readyState === XMLHttpRequest.DONE) {
-          const { status } = target;
-  
-          if (status === 0 || (status >= 200 && status < 400)) {
-              // 요청이 정상적으로 처리 된 경우
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json','Accept':'application/json' },
+        redirect: 'follow'
+    };
 
-          } else {
-              // 에러가 발생한 경우
-            
-          }
-      }*/
+    const ReqAddr = WAS_ADDRESS + keyword
+
+    const dataRequest = async () => {fetch(ReqAddr,requestOptions).then((response) => { console.log(response);this.setState({productList : response})});
+    }
+
+    dataRequest();
+        
     }
 
     productGetRequest(pid){
       
     }
-
-    uploadHandler(e) {
-      e.preventDefault();
-      
-      const company_name = e.target.children[0].value;
-      const product_name = e.target.children[1].value;
-      const file_name = e.target.children[2].value;
-      const version = e.target.children[3].value;
-      fetch(WAS_ADDRESS,{//post to nginx
-        method:'POST',
-        body:JSON.stringify({
-          file: null,
-          company: company_name,
-          product_name : product_name,
-          file_name : file_name,
-          version : version
-        }),
-        header:{
-            "Content-type" : "application/json; charset=UTF-8"
-        }
-      }).then((response) => console.log(response))
-      .catch((error) => {
-        console.log(error);
-      });
-      console.log('upload requested')
-     }
-
-     
 
     toLogin(e){
       e.preventDefault();
@@ -147,17 +109,16 @@ class MainPlate extends Component{
                     onSubmit={e => this.searchByKeyword(e)}
                     onChange={e => this.handleChange(e)}
                     keyword={this.state.keyword}
-                    productList={this.state.productList}
                     /></li>
-                    <li float='right'><a value='Upload' onClick={e=>this.setState({user_method:'POST'})}>Upload</a></li>
-                    <li float='right'><a value='Login' onClick={e=>this.setState({user_method:'LOG'})}/>Login</li>
+                    <li className='float-right'><a value='Login' onClick={e=>this.setState({user_method:'LOG'})}/>Login</li>
+                    <li className='float-right'><a value='Upload' onClick={e=>this.setState({user_method:'POST'})}>Upload</a></li>
                   </ul>
                 </nav>
               </header>
               <main>
                 <div id='method-plate'>
                     {this.state.user_method==='GET'?
-                    <ProductList products={this.state.productList}/>:
+                    <ProductList id='searched-list' products={this.state.productList}/>:
                     <UploadPlate/>}
                 </div>
               </main>
@@ -166,14 +127,14 @@ class MainPlate extends Component{
           return(
           <div>
               <header>
-                <nav className='top-navbar'>
-                  <ul>
-                    <button id='upload-page' className='' value='Upload' onClick={e=>this.setState({user_method:'POST'})}/>
-                    <button className='' value='Login' onClick={e=>this.setState({user_method:'LOG'})}/>
+                <nav id='top-navbar'>
+                  <ul id='top-nav'>
+                    <a className='float-right' value='Login' onClick={e=>this.setState({user_method:'LOG'})}>Login</a>
+                    <a className='float-right' value='Upload' onClick={e=>this.setState({user_method:'POST'})}>Upload</a>
                   </ul>
                 </nav>
               </header>
-              <main>
+              <main id="main">
                   <img id='main-logo' src={mainLogo}/>
                   <SearchFrom
                   onSubmit={e => this.searchByKeyword(e)}

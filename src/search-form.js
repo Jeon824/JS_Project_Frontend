@@ -1,6 +1,6 @@
 export default function SearchFrom(props) {
     return(
-      <div>
+      <div id="search-form-div">
           <form
           onSubmit={props.onSubmit}
           method='get'>
@@ -11,7 +11,7 @@ export default function SearchFrom(props) {
                  defaultValue={props.keyword}
                  onChange={props.onChange}
                />
-               <button type='submit'>Search</button>
+               <input type="submit" value="Submit"/>
           </form>
       </div>
     )
