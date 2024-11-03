@@ -11,7 +11,7 @@ export default function SearchFrom(props) {
                  defaultValue={props.keyword}
                  onChange={props.onChange}
                />
-               <input type="submit" value="Submit"/>
+               <input type="submit" value="검색"/>
           </form>
       </div>
     )

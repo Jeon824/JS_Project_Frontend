@@ -36,6 +36,7 @@ class MainPlate extends Component{
         console.log('search by keyword');
         e.preventDefault();
         const inputKeyword = e.target.children[0].value;
+        
 
         console.log('typed keyword is',inputKeyword);
         this.setState({
@@ -59,17 +60,16 @@ class MainPlate extends Component{
         method: 'GET',
         headers: { 'Content-Type': 'application/json','Accept':'application/json' },
         redirect: 'follow'
-    };
+      };
 
-    const ReqAddr = WAS_ADDRESS + keyword
+      const ReqAddr = WAS_ADDRESS + keyword
 
-    const dataRequest = async () => {fetch(ReqAddr,requestOptions).then((response) => { console.log(response);this.setState({productList : response})});
-    }
+      const dataRequest = async () => {fetch(ReqAddr,requestOptions).then((response) => { console.log(response);this.setState({productList : response})});}
 
-    dataRequest();
+      dataRequest();
         
     }
-
+ 
     productGetRequest(pid){
       
     }
@@ -116,10 +116,11 @@ class MainPlate extends Component{
                 </nav>
               </header>
               <main>
-                <div id='method-plate'>
-                    {this.state.user_method==='GET'?
-                    <ProductList id='searched-list' products={this.state.productList}/>:
-                    <UploadPlate/>}
+                <div id='main-div'>
+                    { this.state.user_method==='GET'?
+                    <ProductList id='searched-list' products={this.state.productList}/> :
+                    <UploadPlate/>
+                    }
                 </div>
               </main>
             </div>)

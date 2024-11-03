@@ -1,5 +1,4 @@
 export default function ProductList(props) {
-    
     return (
       <ul className='product-list'>
         {props.products ? props.products.map(product => (
